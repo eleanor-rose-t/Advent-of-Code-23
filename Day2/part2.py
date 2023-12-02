@@ -25,7 +25,7 @@ def find_minimum_set_power(games):
     return total
 
 def main():
-    with open("test_input.txt") as file:
+    with open("input.txt") as file:
         input_lines = file.readlines()
     
     data = parse_input(input_lines)
