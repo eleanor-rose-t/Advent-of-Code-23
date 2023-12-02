@@ -1,3 +1,5 @@
+import math
+
 def parse_input(input_lines):
     games = {}
     for line in input_lines:
@@ -15,3 +17,20 @@ def parse_input(input_lines):
     
     return games
 
+def find_minimum_set_power(games):
+    colors = ("red", "green", "blue")
+    total = 0
+    for game in games.values():
+        total += math.prod(max(_.get(color, 0) for _ in game) for color in colors)
+    return total
+
+def main():
+    with open("test_input.txt") as file:
+        input_lines = file.readlines()
+    
+    data = parse_input(input_lines)
+    result = find_minimum_set_power(data)
+    print(result)
+    
+if __name__ == "__main__":
+    main()
