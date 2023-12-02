@@ -20,3 +20,10 @@ def find_sum(filename):
         line_values = [find_line_value(line.strip()) for line in lines]
         total_sum = sum(line_values)
         return total_sum
+    
+def main():
+    total_sum = find_sum("input.txt")
+    print(total_sum)
+    
+if __name__ == "__main__":
+    main()
