@@ -11,6 +11,7 @@ def find_line_value(line):
     pattern = r'(?:\d|one|two|three|four|five|six|seven|eight|nine)'
 
     matches = re.findall(pattern, line, re.IGNORECASE)
+    print(matches)
 
     if matches:
         first_digit = matches[0]
@@ -36,7 +37,7 @@ def find_sum(filename):
         return sum
     
 def main():
-    total_sum = find_sum("/Users/eleanorrose/Programming/Advent-of-Code-23/Advent-of-Code-23/Day1/input.txt")
+    total_sum = find_sum("test_input.txt")
     print(total_sum)
     
 if __name__ == "__main__":
