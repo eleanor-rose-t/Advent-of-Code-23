@@ -13,3 +13,13 @@ def find_line_value(line):
         return line_value
     else:
         return 0
+    
+def find_sum(filename):
+    """
+    Sums the line values of each line in the file.
+    """
+    with open(filename) as file:
+        lines = file.readlines()
+        line_values = [find_line_value(line.strip()) for line in lines]
+        total_sum = sum(line_values)
+        return total_sum
