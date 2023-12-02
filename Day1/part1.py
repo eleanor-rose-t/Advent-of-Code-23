@@ -22,7 +22,7 @@ def find_sum(filename):
         return total_sum
     
 def main():
-    total_sum = find_sum("input.txt")
+    total_sum = find_sum("test_input.txt")
     print(total_sum)
     
 if __name__ == "__main__":

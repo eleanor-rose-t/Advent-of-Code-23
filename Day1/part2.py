@@ -1,4 +1,4 @@
-import re
+import regex
 
 def find_line_value(line):
     """
@@ -10,7 +10,7 @@ def find_line_value(line):
     }
     pattern = r'(?:\d|one|two|three|four|five|six|seven|eight|nine)'
 
-    matches = re.findall(pattern, line, re.IGNORECASE)
+    matches = regex.findall(pattern, line, overlapped=True)
     print(matches)
 
     if matches:
@@ -37,8 +37,9 @@ def find_sum(filename):
         return sum
     
 def main():
-    total_sum = find_sum("test_input.txt")
+    total_sum = find_sum("input.txt")
     print(total_sum)
     
 if __name__ == "__main__":
     main()
+
