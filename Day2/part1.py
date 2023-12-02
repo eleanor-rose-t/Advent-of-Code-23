@@ -1,33 +1,35 @@
-def possible_games(games):
-    bag = {"red": 12, "blue": 13, "green": 14}
-    valid_game_ids = []
+def parse_input(input_lines):
+    games = {}
+    for line in input_lines:
+        game_id, draws = line.split(": ")
+        game_id = int(game_id.split()[1])
+        games[game_id] = []
+        
+        individual_draws = draws.split("; ")
+        for draw in individual_draws:
+            draw_data = {}
+            for draw_info in draw.split(", "):
+                count, color = draw_info.split()
+                draw_data[color] = int(count)
+            games[game_id].append(draw_data)
     
-    for index, game in enumerate(games, start=1):
-        counts = {"red": 0, "green": 0, "blue": 0}
-        pulls_sets = game.split("; ")
-        
-        for pulls in pulls_sets:
-            items = pulls.split(", ")
-            for item in items:
-                count, color = item.split(" ")
-                counts[color] += int(count)
-                
-            if any(counts[color] > bag[color] for color in counts):
-                break
-        else:
-            valid_game_ids.append(index)
-                    
-    return sum(valid_game_ids)
+    return games
 
+def possible_games(games):
+    available = {"red": 12, "green": 13, "blue": 14}
+    total = 0
+    for game_id, game_draws in games.items():
+        if all(all(draw[color] <= available[color] for color in draw) for draw in game_draws):
+            total += game_id
+    return total
+    
 def main():
-    games = []
-    with open("test_input.txt") as file:
-        lines = file.readlines()
-        for line in lines:
-            game_data = line.strip().split(": ")[1]
-            games.append(game_data)
-        answer = possible_games(games)
-        print("Answer is: ", str(answer))
-        
+    with open("input.txt") as file:
+        input_lines = file.readlines()
+    
+    data = parse_input(input_lines)
+    result = possible_games(data)
+    print(result)
+    
 if __name__ == "__main__":
     main()
