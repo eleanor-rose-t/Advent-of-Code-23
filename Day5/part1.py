@@ -40,7 +40,7 @@ def find_lowest_location(seeds, all_mappings):
     return min(converted_numbers)
 
 # Read mappings from a file
-mappings_file = "input.txt"  # Replace this with the actual file path
+mappings_file = "input.txt"
 with open(mappings_file, "r") as file:
     mappings_data = file.read().splitlines()
 
