@@ -31,12 +31,12 @@ def solve_steps(start, instructions, connections):
     return index
 
 def main(): 
-    file_name = "input.txt"
+    file_name = "test_input_1.txt"
     input_lines = read_input(file_name)
     inst, conn = parse_connections(input_lines)
 
     result = calculate_steps(inst, conn)
-    print(result)
+    print("Part 1: " + str(result))
     
 if __name__ == "__main__":
     main()
